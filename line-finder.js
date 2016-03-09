@@ -240,8 +240,8 @@
       }
       currentStreak++;
       setTimeout(function() {
-        $cell.value = (cellValue == symbol1 ? symbol2 : symbol1);
         highlightCell(newX, newY, toX, toY);
+        $cell.value = (cellValue == symbol1 ? symbol2 : symbol1);
       }, 200);
 
     } else {
