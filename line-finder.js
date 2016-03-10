@@ -227,10 +227,10 @@
           } else {
             newY--;
           }
-        } else if (fromY >= newY) {
-          newX--;
-        } else if (fromY <= newY) {
+        } else if (fromY > newY) {
           newX++;
+        } else if (fromY < newY) {
+          newX--;
         }
       } else if (cellValue == symbol2) {
         if (fromY === newY) {
@@ -239,10 +239,10 @@
           } else {
             newY++;
           }
-        } else if (fromY >= newY) {
-          newX++;
-        } else if (fromY <= newY) {
+        } else if (fromY > newY) {
           newX--;
+        } else if (fromY < newY) {
+          newX++;
         }
       }
       currentStreak++;
