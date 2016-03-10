@@ -65,6 +65,9 @@
     for (var c = 0; c < columns; c++) {
       var thisColumn = column.cloneNode(false);
       var thisInput = input.cloneNode(false);
+      if (c === 0) {
+        thisInput.value = symbol3;
+      }
       thisColumn.appendChild(thisInput);
       controls.appendChild(thisColumn);
     }
