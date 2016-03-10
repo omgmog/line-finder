@@ -1,3 +1,8 @@
+$cols: 11;
+$colsWidth: 40px;
+
+
+
 body {
   text-align: center;
   padding: 100px;
@@ -8,7 +13,7 @@ body {
 .controls,
 .scoreboard {
   margin: 0 auto;
-  width: 360px;
+  width: $cols * $colsWidth;
 }
 
 .buttonWrap {
@@ -17,14 +22,14 @@ body {
 }
 
 .row {
-  height: 40px;
+  height: $colsWidth;
   overflow: hidden;
 }
 
 .col {
-  width: 40px;
+  width: $colsWidth;
   float: left;
-  height: 40px;
+  height: $colsWidth;
   position: relative;
 }
 
@@ -35,7 +40,7 @@ input {
   border: 0;
   outline: 0;
   text-align: center;
-  line-height: 40px;
+  line-height: $colsWidth;
   padding: 0;
   position: absolute;
   left: 0;

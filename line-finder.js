@@ -8,8 +8,8 @@
   var symbol5 = '⋗';
   var symbol6 = 'GO';
   var symbol7 = 'SHUFFLE';
-  var rows = 9;
-  var columns = 9;
+  var rows = 11;
+  var columns = 11;
   var intervalTime = 200;
 
   var currentStreak = 0;
