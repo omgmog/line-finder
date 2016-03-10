@@ -8,6 +8,7 @@
   var symbol5 = '⋗';
   var symbol6 = 'GO';
   var symbol7 = 'SHUFFLE';
+  var symbol8 = '╳';
   var rows = 11;
   var columns = 11;
   var intervalTime = 200;
@@ -122,7 +123,6 @@
   var randomizeCell = function(cell) {
     var value = ((Math.random(1) * 10.5) % 2) > 1 ? symbol1 : symbol2;
     cell.value = value;
-    cell.setAttribute('value', value);
   };
 
   var randomizeBoard = function() {
@@ -165,6 +165,7 @@
     if ($endCells.length > 0) {
       for (var c = 0; c < $endCells.length; c++) {
         $endCells[c].classList.remove(endClass);
+        randomizeCell($endCells[c]);
       }
     }
   };
@@ -252,10 +253,13 @@
       }, intervalTime);
 
     } else {
-      $cell = $('.' + rowClass + ':nth-child(' + (fromY + 1) + ') .' + colClass + ':nth-child(' + (fromX + 1) + ') input');
-      $cell.classList.add(endClass);
-      endMove();
-      presentScore();
+      setTimeout(function () {
+        $cell = $('.' + rowClass + ':nth-child(' + (fromY + 1) + ') .' + colClass + ':nth-child(' + (fromX + 1) + ') input');
+        $cell.classList.add(endClass);
+        $cell.value = symbol8;
+        endMove();
+        presentScore();
+      }, intervalTime);
     }
   };
 
