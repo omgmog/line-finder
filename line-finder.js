@@ -10,6 +10,7 @@
   var symbol7 = 'SHUFFLE';
   var rows = 9;
   var columns = 9;
+  var intervalTime = 200;
 
   var currentStreak = 0;
   var highScore = 0;
@@ -119,7 +120,7 @@
   };
 
   var randomizeCell = function(cell) {
-    var value = ((Math.random(1) * 205.5) % 2) > 1 ? symbol1 : symbol2;
+    var value = ((Math.random(1) * 10.5) % 2) > 1 ? symbol1 : symbol2;
     cell.value = value;
     cell.setAttribute('value', value);
   };
@@ -198,7 +199,10 @@
     for (var b = 0; b < buttons.length; b++) {
       buttons[b].setAttribute('disabled', 'disabled');
     }
-    highlightCell(currentColumn, rows - 1, currentColumn, rows - 1);
+    $('.' + rowClass + ':nth-child(' + (rows) + ') .' + colClass + ':nth-child(' + (currentColumn + 1) + ') input').classList.add(hlClass);
+    setTimeout(function () {
+      highlightCell(currentColumn, rows - 2, currentColumn, rows - 1);
+    }, intervalTime);
   };
 
   var highlightCell = function(toX, toY, fromX, fromY) {
@@ -245,7 +249,7 @@
       setTimeout(function() {
         highlightCell(newX, newY, toX, toY);
         $cell.value = (cellValue == symbol1 ? symbol2 : symbol1);
-      }, 200);
+      }, intervalTime);
 
     } else {
       $cell = $('.' + rowClass + ':nth-child(' + (fromY + 1) + ') .' + colClass + ':nth-child(' + (fromX + 1) + ') input');
