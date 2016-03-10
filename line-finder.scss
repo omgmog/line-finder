@@ -42,12 +42,13 @@ input {
   right: 0;
   bottom: 0;
   top: 0;
+  background: #fff;
 }
 
 .col input {
   line-height: 20px;
   vertical-align: middle;
-  font-size: 40px;
+  font-size: 28px;
 }
 
 button {
@@ -76,12 +77,12 @@ button {
 
 @for $level from 0 to 100 {
   .hl-#{$level} {
-    background-color: adjust-hue(yellow, 3.6*$level);
+    background-color: adjust-hue(#ff0, 3.6*$level);
   }
 }
 
 .end {
-  color: red;
+  color: #f00;
 }
 
 .scoreboard {
