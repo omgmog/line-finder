@@ -1,14 +1,16 @@
 (function() {
   'use strict';
 
-  var symbol1 = '╱';
-  var symbol2 = '╲';
-  var symbol3 = '▲';
-  var symbol4 = '⋖';
-  var symbol5 = '⋗';
-  var symbol6 = 'GO';
-  var symbol7 = 'SHUFFLE';
-  var symbol8 = '╳';
+  var symbols = {
+    right: '╱',
+    left: '╲',
+    select_up: '▲',
+    select_down: '▼',
+    select_left: '◀',
+    select_right: '▶',
+    end: '╳'
+  };
+
   var rows = 11;
   var columns = 11;
   var intervalTime = 200;
@@ -68,7 +70,7 @@
       var thisColumn = $clone(column);
       var thisInput = $clone(input);
       if (c === 0) {
-        thisInput.value = symbol3;
+        thisInput.value = symbols.select_up;
       }
       thisColumn.appendChild(thisInput);
       controls.appendChild(thisColumn);
@@ -79,19 +81,19 @@
 
     var lButton = $clone(button);
     lButton.classList.add('left');
-    lButton.innerText = symbol4;
+    lButton.innerText = symbols.select_left;
 
     var rButton = $clone(button);
     rButton.classList.add('right');
-    rButton.innerText = symbol5;
+    rButton.innerText = symbols.select_right;
 
     var startButton = $clone(button);
     startButton.classList.add('start');
-    startButton.innerText = symbol6;
+    startButton.innerText = 'GO';
 
     var shuffleButton = $clone(button);
     shuffleButton.classList.add('shuffle');
-    shuffleButton.innerText = symbol7;
+    shuffleButton.innerText = 'SHUFFLE';
 
     buttonWrap.appendChild(lButton);
     buttonWrap.appendChild(rButton);
@@ -121,7 +123,7 @@
   };
 
   var randomizeCell = function(cell) {
-    var value = ((Math.random(1) * 10.5) % 2) > 1 ? symbol1 : symbol2;
+    var value = ((Math.random(1) * 10.5) % 2) > 1 ? symbols.right : symbols.left;
     cell.value = value;
   };
 
@@ -189,7 +191,7 @@
     for (var c = 0; c < columns; c++) {
       $columnIndicators[c].value = '';
     }
-    $columnIndicators[currentColumn].value = symbol3;
+    $columnIndicators[currentColumn].value = symbols.select_up;
 
   };
 
@@ -221,7 +223,7 @@
       }
       touchedCells.push(newX + 'x' + newY);
 
-      if (cellValue == symbol1) {
+      if (cellValue == symbols.right) {
         if (fromY === newY) {
           if (fromX > newX) {
             newY++;
@@ -233,7 +235,7 @@
         } else if (fromY < newY) {
           newX--;
         }
-      } else if (cellValue == symbol2) {
+      } else if (cellValue == symbols.left) {
         if (fromY === newY) {
           if (fromX > newX) {
             newY--;
@@ -249,14 +251,14 @@
       currentStreak++;
       setTimeout(function() {
         highlightCell(newX, newY, toX, toY);
-        $cell.value = (cellValue == symbol1 ? symbol2 : symbol1);
+        $cell.value = (cellValue == symbols.right ? symbols.left : symbols.right);
       }, intervalTime);
 
     } else {
       setTimeout(function () {
         $cell = $('.' + rowClass + ':nth-child(' + (fromY + 1) + ') .' + colClass + ':nth-child(' + (fromX + 1) + ') input');
         $cell.classList.add(endClass);
-        $cell.value = symbol8;
+        $cell.value = symbols.end;
         endMove();
         presentScore();
       }, intervalTime);
