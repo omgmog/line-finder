@@ -1,6 +1,7 @@
 $cols: 11;
 $colsWidth: 40px;
 
+$startColor: #fff000;
 
 
 body {
@@ -48,6 +49,7 @@ input {
   bottom: 0;
   top: 0;
   background: #fff;
+  color: #aaa;
   transition: background-color .1s ease;
 }
 
@@ -82,13 +84,17 @@ button {
 }
 
 @for $level from 0 to 100 {
+  $color: adjust-hue($startColor, 3.6*$level);
+
   .hl-#{$level} {
-    background-color: adjust-hue(#ff0, 3.6*$level);
+    background-color: $color;
+    color: #222;
   }
 }
 
 .end {
-  color: #f00;
+  background: #df0000;
+  color: #fff;
 }
 
 .scoreboard {
