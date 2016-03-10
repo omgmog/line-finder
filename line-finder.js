@@ -37,18 +37,18 @@
   };
 
   var createCells = function() {
-    var column = div.cloneNode(false);
+    var column = $clone(div);
     column.classList.add(colClass);
-    var row = div.cloneNode(false);
+    var row = $clone(div);
     row.classList.add(rowClass);
-    var board = div.cloneNode(false);
+    var board = $clone(div);
     board.classList.add('board');
 
     for (var r = 0; r < rows; r++) {
-      var thisRow = row.cloneNode(false);
+      var thisRow = $clone(row);
       for (var c = 0; c < columns; c++) {
-        var thisColumn = column.cloneNode(false);
-        var thisInput = input.cloneNode(false);
+        var thisColumn = $clone(column);
+        var thisInput = $clone(input);
         randomizeCell(thisInput);
         thisColumn.appendChild(thisInput);
         thisRow.appendChild(thisColumn);
@@ -59,14 +59,14 @@
   };
 
   var createControls = function() {
-    var controls = div.cloneNode(false);
+    var controls = $clone(div);
     controls.classList.add('controls');
-    var column = div.cloneNode(false);
+    var column = $clone(div);
     column.classList.add(colClass);
 
     for (var c = 0; c < columns; c++) {
-      var thisColumn = column.cloneNode(false);
-      var thisInput = input.cloneNode(false);
+      var thisColumn = $clone(column);
+      var thisInput = $clone(input);
       if (c === 0) {
         thisInput.value = symbol3;
       }
@@ -74,22 +74,22 @@
       controls.appendChild(thisColumn);
     }
 
-    var buttonWrap = div.cloneNode(false);
+    var buttonWrap = $clone(div);
     buttonWrap.classList.add('buttonWrap');
 
-    var lButton = button.cloneNode(false);
+    var lButton = $clone(button);
     lButton.classList.add('left');
     lButton.innerText = symbol4;
 
-    var rButton = button.cloneNode(false);
+    var rButton = $clone(button);
     rButton.classList.add('right');
     rButton.innerText = symbol5;
 
-    var startButton = button.cloneNode(false);
+    var startButton = $clone(button);
     startButton.classList.add('start');
     startButton.innerText = symbol6;
 
-    var shuffleButton = button.cloneNode(false);
+    var shuffleButton = $clone(button);
     shuffleButton.classList.add('shuffle');
     shuffleButton.innerText = symbol7;
 
@@ -106,14 +106,14 @@
   };
 
   var createScoreBoard = function() {
-    var scoreboard = div.cloneNode(false);
+    var scoreboard = $clone(div);
     scoreboard.classList.add('scoreboard');
 
-    var streak = input.cloneNode(false);
+    var streak = $clone(input);
     streak.classList.add('streak');
     scoreboard.appendChild(streak);
 
-    var highscore = input.cloneNode(false);
+    var highscore = $clone(input);
     highscore.classList.add('highscore');
     scoreboard.appendChild(highscore);
 
@@ -287,6 +287,10 @@
   };
   var $$ = function(selector) {
     return document.querySelectorAll(selector);
+  };
+
+  var $clone = function (node) {
+    return node.cloneNode(false);
   };
 
   init();
