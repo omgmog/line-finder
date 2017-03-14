@@ -4,7 +4,7 @@ A simple random maze generator game, where the objective is to create the longes
 
 You can play Line Finder in your browser here: [https://blog.omgmog.net/line-finder](https://blog.omgmog.net/line-finder)
 
-![](https://i.imgur.com/7bQuAR5.png)
+![](preview.gif)
 
 ## Rules
 
@@ -16,7 +16,7 @@ Right slash (`/`):
 
 | In | Out |
 |:--:|:---:|
-|`>` |`^`  |
+|`>`|`^`|
 |`^`|`>`|
 |`<`|`v`|
 |`v`|`<`|
@@ -26,7 +26,7 @@ Left slash (`\`):
 
 | In | Out |
 |:--:|:---:|
-|`>` |`v`  |
+|`>`|`v`|
 |`^`|`<`|
 |`<`|`^`|
 |`v`|`>`|
